@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>LOGIN</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+      margin:40px;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .top {
+      flex: 7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    .bottom {
+      flex: 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main {
+      width: 800px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid lightgrey;
+      border-radius: 5px;
+    }
+
+    .box1 {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .box1 iframe {
+      width: 700px;
+      height: 500px;
+      overflow: hidden;
+      border: none;
+    }
+
+    .logo {
+      margin-top: 0;
+      margin-bottom: 20px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #login {
+      width: 100%;
+      background-color: rgb(154, 167, 172);
+      border-color: transparent;
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    #alert {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    #user-link {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="top">
+      <div class="main">
+        <h1 class="logo">FACE ID</h1>
+        <div class="container">
+          <div class="box1">
+            <iframe src="" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div style="text-align: center;">
+        {% if user_data.user != 'Unknown' %}
+        <a href="/user/" id="login" class="account">LOGIN</a>
+        {% else %}
+        <span id="login" class="account">LOGIN</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('login').addEventListener('click', function() {
+      var lastUser = '{{ user_data.user }}';  // 데이터베이스에서 가져온 사용자 정보
+
+      if (lastUser === 'unknown') {
+        return false;  // 링크 클릭 이벤트를 중단합니다.
+      }
+    });
+  </script>
+</body>
+</html>
